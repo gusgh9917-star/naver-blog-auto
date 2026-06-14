@@ -229,22 +229,58 @@ st.markdown("""
     <div class="store-badge">📱 휴대폰성지 옆커폰 보라매점</div>
     <div class="hero-title">네이버 블로그<br><span>AI 자동 포스팅</span></div>
     <div class="hero-sub">키워드 하나로 SEO 최적화 블로그 글 + 이미지를 자동으로 완성</div>
-    <div class="stat-row">
-        <div class="stat-item">
-            <div class="stat-num">3분</div>
-            <div class="stat-label">포스팅 1개 완성</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-num">0원</div>
-            <div class="stat-label">완전 무료</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-num">2026</div>
-            <div class="stat-label">SEO 최적화</div>
-        </div>
-    </div>
 </div>
 """, unsafe_allow_html=True)
+
+# ── 사용 가이드 ──────────────────────────────────────────
+with st.expander("📖 사용방법 가이드 (처음 사용 시 읽어주세요)", expanded=False):
+    st.markdown("""
+    <div style='color:rgba(255,255,255,0.85); line-height:2;'>
+
+    ### 📱 옆커폰 보라매점 블로그 자동화 사용법
+
+    ---
+
+    **✅ 기본 사용법**
+
+    1. **키워드 입력** → 블로그에 올릴 주제를 입력하세요
+       - 예시: `갤럭시 S25 요금제 추천`
+       - 예시: `아이폰 16 중고 시세 2026`
+       - 예시: `번호이동 혜택 보라매 휴대폰`
+
+    2. **🚀 시작 버튼** 클릭
+
+    3. **기다리기** (약 3분 소요)
+       - AI가 자동으로 글 작성 + 이미지 생성 + 블로그 업로드까지 완료
+
+    ---
+
+    **⚙️ 왼쪽 설정 메뉴**
+
+    | 항목 | 설명 |
+    |------|------|
+    | 이미지 생성 개수 | 1~3장 (많을수록 시간 더 걸림) |
+    | 추가 요청사항 | 특별히 강조하고 싶은 내용 입력 |
+    | 생성 후 자동 포스팅 | 체크하면 네이버 블로그에 자동 업로드 |
+
+    ---
+
+    **💡 꿀팁**
+
+    - 키워드는 **고객이 실제 검색할 법한 단어**로 입력하면 효과 좋음
+    - 추가 요청사항에 **"보라매점 방문 유도"** 라고 입력하면 매장 홍보 문구 자동 포함
+    - 하루 **2~3개** 포스팅 권장 (너무 많으면 네이버 제재 가능)
+
+    ---
+
+    **⚠️ 주의사항**
+
+    - 포스팅 중 브라우저(크롬)가 자동으로 열리는 건 정상입니다
+    - 네이버 로그인 인증이 뜨면 관리자에게 문의하세요
+    - 완료 전에 창을 닫지 마세요
+
+    </div>
+    """, unsafe_allow_html=True)
 
 # ── 사이드바 ──────────────────────────────────────────────
 with st.sidebar:
