@@ -164,7 +164,6 @@ header { visibility: hidden !important; height: 0 !important; }
 div[class*="viewerBadge"] { display: none !important; }
 div[class*="badge"] { display: none !important; }
 a[href*="streamlit.io"] { display: none !important; }
-iframe { display: none !important; }
 </style>
 """, unsafe_allow_html=True)
 
