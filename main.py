@@ -8,7 +8,7 @@ from modules.writer import generate_blog_post
 from modules.image_maker import generate_images
 
 st.set_page_config(
-    page_title="옆커폰 보라매점 | 블로그 자동화",
+    page_title="휴대폰성지 옆커폰 보라매점 AI 블로그",
     page_icon="📱",
     layout="wide",
 )
