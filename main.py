@@ -6,7 +6,6 @@ load_dotenv()
 from modules.researcher import gather_research
 from modules.writer import generate_blog_post
 from modules.image_maker import generate_images
-from modules.poster import post_to_naver_blog
 
 st.set_page_config(
     page_title="옆커폰 보라매점 | 블로그 자동화",
@@ -31,14 +30,9 @@ section[data-testid="stSidebar"] {
     border-right: 1px solid rgba(255,255,255,0.1);
 }
 
-section[data-testid="stSidebar"] * {
-    color: #fff !important;
-}
+section[data-testid="stSidebar"] * { color: #fff !important; }
 
-.hero-box {
-    text-align: center;
-    padding: 50px 20px 30px;
-}
+.hero-box { text-align: center; padding: 50px 20px 30px; }
 
 .store-badge {
     display: inline-block;
@@ -66,49 +60,37 @@ section[data-testid="stSidebar"] * {
     -webkit-text-fill-color: transparent;
 }
 
-.hero-sub {
-    color: rgba(255,255,255,0.5);
+.hero-sub { color: rgba(255,255,255,0.5); font-size: 15px; margin-bottom: 40px; }
+
+.copy-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 16px 20px;
+    color: #fff;
     font-size: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 12px;
+    word-break: break-all;
 }
 
-.glass-card {
-    background: rgba(255,255,255,0.07);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 20px;
+.label-tag {
+    display: inline-block;
+    background: linear-gradient(90deg, #a855f7, #6366f1);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-bottom: 8px;
 }
 
-.stat-row {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-.stat-item {
-    background: rgba(255,255,255,0.07);
+.step-card {
+    background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 16px;
-    padding: 16px 28px;
-    text-align: center;
-    color: white;
-}
-
-.stat-num {
-    font-size: 28px;
-    font-weight: 900;
-    background: linear-gradient(90deg, #a855f7, #06b6d4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.stat-label {
-    font-size: 12px;
-    color: rgba(255,255,255,0.4);
-    margin-top: 2px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    color: rgba(255,255,255,0.85);
 }
 
 .stTextInput > div > div > input {
@@ -121,18 +103,13 @@ section[data-testid="stSidebar"] * {
     height: auto !important;
 }
 
-.stTextInput > div > div > input::placeholder {
-    color: rgba(255,255,255,0.3) !important;
-}
-
+.stTextInput > div > div > input::placeholder { color: rgba(255,255,255,0.3) !important; }
 .stTextInput > div > div > input:focus {
     border-color: #a855f7 !important;
     box-shadow: 0 0 0 3px rgba(168,85,247,0.2) !important;
 }
 
-div[data-testid="stTextInput"] label {
-    color: rgba(255,255,255,0.7) !important;
-}
+div[data-testid="stTextInput"] label { color: rgba(255,255,255,0.7) !important; }
 
 .stButton > button {
     background: linear-gradient(135deg, #a855f7, #6366f1) !important;
@@ -145,7 +122,6 @@ div[data-testid="stTextInput"] label {
     height: auto !important;
     width: 100% !important;
     transition: all 0.3s !important;
-    letter-spacing: 0.5px;
 }
 
 .stButton > button:hover {
@@ -163,14 +139,6 @@ div[data-testid="stTextInput"] label {
     border-radius: 10px !important;
 }
 
-.stSlider > div > div > div > div {
-    background: linear-gradient(90deg, #a855f7, #6366f1) !important;
-}
-
-.stCheckbox > label {
-    color: rgba(255,255,255,0.8) !important;
-}
-
 .stTextArea textarea {
     background: rgba(255,255,255,0.08) !important;
     border: 1px solid rgba(255,255,255,0.15) !important;
@@ -184,42 +152,9 @@ div[data-testid="stExpander"] {
     border-radius: 16px !important;
 }
 
-div[data-testid="stExpander"] summary {
-    color: #fff !important;
-}
-
-.success-box {
-    background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(99,102,241,0.2));
-    border: 1px solid rgba(168,85,247,0.4);
-    border-radius: 16px;
-    padding: 20px;
-    color: white;
-    text-align: center;
-    font-weight: 600;
-}
-
-.step-badge {
-    display: inline-block;
-    background: linear-gradient(90deg, #a855f7, #6366f1);
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 50px;
-    margin-right: 8px;
-}
-
-p, div, label, span {
-    color: rgba(255,255,255,0.85);
-}
-
+div[data-testid="stExpander"] summary { color: #fff !important; }
+p, div, label, span { color: rgba(255,255,255,0.85); }
 h1, h2, h3 { color: #fff !important; }
-
-.stAlert { border-radius: 14px !important; }
-
-div[data-testid="stMarkdownContainer"] {
-    color: rgba(255,255,255,0.85) !important;
-}
 </style>
 """, unsafe_allow_html=True)
 
@@ -227,57 +162,43 @@ div[data-testid="stMarkdownContainer"] {
 st.markdown("""
 <div class="hero-box">
     <div class="store-badge">📱 휴대폰성지 옆커폰 보라매점</div>
-    <div class="hero-title">네이버 블로그<br><span>AI 자동 포스팅</span></div>
+    <div class="hero-title">네이버 블로그<br><span>AI 자동 작성</span></div>
     <div class="hero-sub">키워드 하나로 SEO 최적화 블로그 글 + 이미지를 자동으로 완성</div>
 </div>
 """, unsafe_allow_html=True)
 
-# ── 사용 가이드 ──────────────────────────────────────────
+# ── 사용 가이드 ────────────────────────────────────────────
 with st.expander("📖 사용방법 가이드 (처음 사용 시 읽어주세요)", expanded=False):
     st.markdown("""
     <div style='color:rgba(255,255,255,0.85); line-height:2;'>
 
-    ### 📱 옆커폰 보라매점 블로그 자동화 사용법
+    **✅ 사용 순서**
+
+    1. 키워드 입력 → 🚀 시작 클릭
+    2. 약 3분 기다리기
+    3. 완성된 **제목 / 태그 / 본문** 복사
+    4. 네이버 블로그 글쓰기에 붙여넣기
+    5. 이미지도 다운로드해서 블로그에 첨부
 
     ---
 
-    **✅ 기본 사용법**
-
-    1. **키워드 입력** → 블로그에 올릴 주제를 입력하세요
-       - 예시: `갤럭시 S25 요금제 추천`
-       - 예시: `아이폰 16 중고 시세 2026`
-       - 예시: `번호이동 혜택 보라매 휴대폰`
-
-    2. **🚀 시작 버튼** 클릭
-
-    3. **기다리기** (약 3분 소요)
-       - AI가 자동으로 글 작성 + 이미지 생성 + 블로그 업로드까지 완료
+    **💡 키워드 예시**
+    - `갤럭시 S25 요금제 추천`
+    - `아이폰 16 중고 시세 2026`
+    - `번호이동 혜택 보라매 휴대폰`
+    - `갤럭시 S25 카메라 비교`
 
     ---
 
-    **⚙️ 왼쪽 설정 메뉴**
-
-    | 항목 | 설명 |
-    |------|------|
-    | 이미지 생성 개수 | 1~3장 (많을수록 시간 더 걸림) |
-    | 추가 요청사항 | 특별히 강조하고 싶은 내용 입력 |
-    | 생성 후 자동 포스팅 | 체크하면 네이버 블로그에 자동 업로드 |
-
-    ---
-
-    **💡 꿀팁**
-
-    - 키워드는 **고객이 실제 검색할 법한 단어**로 입력하면 효과 좋음
-    - 추가 요청사항에 **"보라매점 방문 유도"** 라고 입력하면 매장 홍보 문구 자동 포함
-    - 하루 **2~3개** 포스팅 권장 (너무 많으면 네이버 제재 가능)
+    **⚙️ 왼쪽 설정**
+    - **이미지 개수**: 1~3장 조절 가능
+    - **추가 요청사항**: "보라매점 방문 유도 포함해줘" 같은 요청 가능
 
     ---
 
     **⚠️ 주의사항**
-
-    - 포스팅 중 브라우저(크롬)가 자동으로 열리는 건 정상입니다
-    - 네이버 로그인 인증이 뜨면 관리자에게 문의하세요
-    - 완료 전에 창을 닫지 마세요
+    - 하루 2~3개 포스팅 권장
+    - 생성된 글은 약간 수정 후 올리면 더 좋음
 
     </div>
     """, unsafe_allow_html=True)
@@ -289,10 +210,9 @@ with st.sidebar:
     num_images = st.slider("이미지 생성 개수", 1, 3, 2)
     extra_notes = st.text_area(
         "추가 요청사항",
-        placeholder="예: Galaxy S25 가격 위주로, 20대 타겟, 매장 이름 '옆커폰' 언급",
+        placeholder="예: 보라매점 방문 유도 포함, 20대 타겟으로 작성",
         height=120,
     )
-    auto_post = st.checkbox("생성 후 자동 포스팅", value=True)
     st.markdown("---")
     st.markdown("<small style='color:rgba(255,255,255,0.3)'>⚡ Powered by Gemini AI</small>", unsafe_allow_html=True)
 
@@ -301,7 +221,7 @@ col1, col2 = st.columns([4, 1])
 with col1:
     keyword = st.text_input(
         "키워드",
-        placeholder="예: 갤럭시 S25 요금제 추천, 아이폰16 중고 시세, 번호이동 혜택 2026",
+        placeholder="예: 갤럭시 S25 요금제 추천, 아이폰16 중고 시세, 번호이동 혜택",
         label_visibility="collapsed",
     )
 with col2:
@@ -319,61 +239,54 @@ if start_btn and keyword:
         status_box.info("네이버에서 관련 정보를 모으고 있습니다...")
         research = gather_research(keyword)
 
-        progress.progress(30, text="✍️ AI가 블로그 글 작성 중...")
+        progress.progress(35, text="✍️ AI가 블로그 글 작성 중...")
         status_box.info("Gemini AI가 SEO 최적화 글을 작성 중입니다... (약 20초)")
         post_data = generate_blog_post(keyword, research, extra_notes)
 
-        progress.progress(55, text="🎨 이미지 생성 중...")
+        progress.progress(60, text="🎨 이미지 생성 중...")
         status_box.info(f"AI가 이미지 {num_images}장을 생성 중입니다... (약 1~2분)")
         image_paths = generate_images(post_data["image_prompts"][:num_images], keyword)
 
-        progress.progress(75, text="✅ 글 & 이미지 완성!")
-        status_box.success("완성! 아래에서 확인하세요.")
+        progress.progress(100, text="✅ 완성!")
+        status_box.success("완성! 아래 내용을 네이버 블로그에 복사해서 붙여넣으세요.")
 
-        with st.expander("📄 생성된 블로그 글 보기", expanded=True):
-            st.markdown(f"### {post_data['title']}")
-            st.caption(f"📌 {post_data['meta_description']}")
-            st.caption(f"🏷️ {' · '.join(post_data['tags'])}")
-            st.divider()
-            st.markdown(post_data["content"])
+        st.markdown("---")
 
+        # 제목 복사
+        st.markdown('<div class="label-tag">📌 제목</div>', unsafe_allow_html=True)
+        st.text_area("제목 (복사하세요)", value=post_data["title"], height=68, key="title_area", label_visibility="collapsed")
+
+        # 태그 복사
+        st.markdown('<div class="label-tag">🏷️ 태그</div>', unsafe_allow_html=True)
+        tags_text = " ".join([f"#{t}" for t in post_data["tags"]])
+        st.text_area("태그 (복사하세요)", value=tags_text, height=68, key="tags_area", label_visibility="collapsed")
+
+        # 본문 복사
+        st.markdown('<div class="label-tag">📝 본문</div>', unsafe_allow_html=True)
+        st.text_area("본문 (복사하세요)", value=post_data["content"], height=400, key="content_area", label_visibility="collapsed")
+
+        # 이미지 다운로드
         if image_paths:
-            with st.expander("🖼️ 생성된 이미지", expanded=True):
-                cols = st.columns(len(image_paths))
-                for i, (col, path) in enumerate(zip(cols, image_paths)):
-                    with col:
-                        st.image(path, use_container_width=True)
-
-        if auto_post:
-            progress.progress(85, text="📤 네이버 블로그에 올리는 중...")
-
-            def update_status(msg):
-                status_box.info(f"📤 {msg}")
-
-            success = post_to_naver_blog(
-                title=post_data["title"],
-                content=post_data["content"],
-                tags=post_data["tags"],
-                image_paths=image_paths,
-                status_callback=update_status,
-            )
-
-            if success:
-                progress.progress(100, text="🎉 포스팅 완료!")
-                st.markdown(f"""
-                <div class="success-box">
-                    🎉 네이버 블로그 포스팅 완료!<br>
-                    <small>키워드: {keyword}</small>
-                </div>
-                """, unsafe_allow_html=True)
-                st.balloons()
-        else:
-            progress.progress(100, text="✅ 완료!")
+            st.markdown("---")
+            st.markdown('<div class="label-tag">🖼️ 이미지 (다운로드 후 블로그에 첨부)</div>', unsafe_allow_html=True)
+            cols = st.columns(len(image_paths))
+            for i, (col, path) in enumerate(zip(cols, image_paths)):
+                with col:
+                    st.image(path, use_container_width=True)
+                    with open(path, "rb") as f:
+                        st.download_button(
+                            label=f"⬇️ 이미지 {i+1} 다운로드",
+                            data=f,
+                            file_name=f"blog_image_{i+1}.png",
+                            mime="image/png",
+                            key=f"dl_{i}",
+                            use_container_width=True,
+                        )
 
     except Exception as e:
         progress.empty()
         st.error(f"오류: {str(e)}")
-        st.info("💡 .env 파일의 API 키와 네이버 계정 정보를 확인해주세요.")
+        st.info("💡 API 키가 올바른지 확인해주세요. (관리자 문의)")
 
 elif start_btn and not keyword:
     st.warning("키워드를 입력해주세요!")
