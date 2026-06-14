@@ -94,16 +94,16 @@ section[data-testid="stSidebar"] * { color: #fff !important; }
 }
 
 .stTextInput > div > div > input {
-    background: rgba(255,255,255,0.08) !important;
-    border: 1px solid rgba(255,255,255,0.15) !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
     border-radius: 14px !important;
-    color: #fff !important;
+    color: #111111 !important;
     font-size: 16px !important;
     padding: 16px 20px !important;
     height: auto !important;
 }
 
-.stTextInput > div > div > input::placeholder { color: rgba(255,255,255,0.3) !important; }
+.stTextInput > div > div > input::placeholder { color: #aaaaaa !important; }
 .stTextInput > div > div > input:focus {
     border-color: #a855f7 !important;
     box-shadow: 0 0 0 3px rgba(168,85,247,0.2) !important;
