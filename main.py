@@ -155,11 +155,16 @@ div[data-testid="stExpander"] {
 div[data-testid="stExpander"] summary { color: #fff !important; }
 p, div, label, span { color: rgba(255,255,255,0.85); }
 h1, h2, h3 { color: #fff !important; }
-footer { display: none !important; }
-#MainMenu { display: none !important; }
-header { display: none !important; }
-[data-testid="stToolbar"] { display: none !important; }
-[data-testid="stDecoration"] { display: none !important; }
+footer { visibility: hidden !important; height: 0 !important; }
+#MainMenu { visibility: hidden !important; height: 0 !important; }
+header { visibility: hidden !important; height: 0 !important; }
+[data-testid="stToolbar"] { visibility: hidden !important; height: 0 !important; }
+[data-testid="stDecoration"] { visibility: hidden !important; height: 0 !important; }
+[data-testid="stHeader"] { visibility: hidden !important; height: 0 !important; }
+div[class*="viewerBadge"] { display: none !important; }
+div[class*="badge"] { display: none !important; }
+a[href*="streamlit.io"] { display: none !important; }
+iframe { display: none !important; }
 </style>
 """, unsafe_allow_html=True)
 
