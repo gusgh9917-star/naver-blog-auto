@@ -155,6 +155,11 @@ div[data-testid="stExpander"] {
 div[data-testid="stExpander"] summary { color: #fff !important; }
 p, div, label, span { color: rgba(255,255,255,0.85); }
 h1, h2, h3 { color: #fff !important; }
+footer { display: none !important; }
+#MainMenu { display: none !important; }
+header { display: none !important; }
+[data-testid="stToolbar"] { display: none !important; }
+[data-testid="stDecoration"] { display: none !important; }
 </style>
 """, unsafe_allow_html=True)
 
