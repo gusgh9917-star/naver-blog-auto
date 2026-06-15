@@ -52,7 +52,8 @@ def generate_blog_post(keyword: str, research_data: str, extra_notes: str = "") 
     }
 
     response = requests.post(url, json=payload, timeout=120)
-    response.raise_for_status()
+    if not response.ok:
+        raise Exception(f"Gemini 오류 {response.status_code}: {response.text}")
 
     raw = response.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
 
