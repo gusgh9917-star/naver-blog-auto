@@ -43,7 +43,7 @@ def generate_blog_post(keyword: str, research_data: str, extra_notes: str = "") 
 
 위 키워드로 네이버 블로그 글을 작성해주세요. JSON 형식으로만 응답하세요."""
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 
     payload = {
         "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
