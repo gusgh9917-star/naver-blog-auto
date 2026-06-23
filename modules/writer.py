@@ -71,4 +71,29 @@ def generate_blog_post(keyword: str, research_data: str, extra_notes: str = "") 
     elif "```" in raw:
         raw = raw.split("```")[1].split("```")[0].strip()
 
-    return json.loads(raw)
+    # JSON 문자열 내 제어문자 정리
+    def fix_json(s):
+        result = []
+        in_string = False
+        escape_next = False
+        for char in s:
+            if escape_next:
+                result.append(char)
+                escape_next = False
+            elif char == '\\':
+                result.append(char)
+                escape_next = True
+            elif char == '"':
+                result.append(char)
+                in_string = not in_string
+            elif in_string and char == '\n':
+                result.append('\\n')
+            elif in_string and char == '\r':
+                result.append('\\r')
+            elif in_string and char == '\t':
+                result.append('\\t')
+            else:
+                result.append(char)
+        return ''.join(result)
+
+    return json.loads(fix_json(raw))
