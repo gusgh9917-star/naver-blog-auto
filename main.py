@@ -140,10 +140,10 @@ div[data-testid="stTextInput"] label { color: rgba(255,255,255,0.7) !important; 
 }
 
 .stTextArea textarea {
-    background: rgba(255,255,255,0.08) !important;
+    background: #ffffff !important;
     border: 1px solid rgba(255,255,255,0.15) !important;
     border-radius: 14px !important;
-    color: #fff !important;
+    color: #111111 !important;
 }
 
 div[data-testid="stExpander"] {
