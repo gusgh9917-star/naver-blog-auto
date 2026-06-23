@@ -83,15 +83,14 @@ section[data-testid="stSidebar"] * { color: rgba(255,255,255,0.8) !important; }
 
 /* 입력 */
 .stTextInput > div > div > input {
-    background: rgba(255,255,255,0.06) !important;
+    background: #ffffff !important;
     border: 1px solid rgba(255,255,255,0.15) !important;
     border-radius: 16px !important;
-    color: #ffffff !important;
+    color: #111111 !important;
     font-size: 16px !important;
     padding: 16px 20px !important;
-    backdrop-filter: blur(10px);
 }
-.stTextInput > div > div > input::placeholder { color: rgba(255,255,255,0.3) !important; }
+.stTextInput > div > div > input::placeholder { color: #aaaaaa !important; }
 .stTextInput > div > div > input:focus {
     border-color: #a855f7 !important;
     box-shadow: 0 0 0 3px rgba(168,85,247,0.15) !important;
