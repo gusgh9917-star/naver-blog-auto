@@ -1,5 +1,6 @@
 import os
 import json
+import time
 import requests
 
 
@@ -139,11 +140,21 @@ def _generate_with_groq(keyword, research_data, extra_notes, store_name):
         "temperature": 0.8,
         "max_tokens": 5000,
     }
-    response = requests.post(url, headers=headers, json=payload, timeout=120)
-    if not response.ok:
-        raise Exception(f"Groq 오류 {response.status_code}: {response.text}")
-    raw = response.json()["choices"][0]["message"]["content"].strip()
-    return _parse_response(raw)
+    for attempt in range(3):
+        response = requests.post(url, headers=headers, json=payload, timeout=120)
+        if response.status_code == 429:
+            wait = 25
+            try:
+                wait = int(response.json()["error"]["message"].split("try again in ")[1].split("s.")[0].split(".")[0]) + 3
+            except Exception:
+                pass
+            time.sleep(wait)
+            continue
+        if not response.ok:
+            raise Exception(f"Groq 오류 {response.status_code}: {response.text}")
+        raw = response.json()["choices"][0]["message"]["content"].strip()
+        return _parse_response(raw)
+    raise Exception("요청이 너무 많습니다. 1분 후 다시 시도해주세요.")
 
 
 def _generate_with_openai(keyword, research_data, extra_notes, store_name):
