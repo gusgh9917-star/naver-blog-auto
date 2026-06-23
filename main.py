@@ -216,14 +216,31 @@ with st.expander("📖 사용방법 가이드 (처음 사용 시 읽어주세요
 with st.sidebar:
     st.markdown("### ⚙️ 설정")
     st.markdown("---")
-    num_images = st.slider("이미지 생성 개수", 1, 5, 5)
+
+    st.markdown("<div style='color:rgba(255,255,255,0.7); font-size:14px; margin-bottom:6px;'>📎 내 이미지 첨부 (선택)</div>", unsafe_allow_html=True)
+    st.markdown("<div style='color:rgba(255,255,255,0.4); font-size:12px; margin-bottom:8px;'>첨부하면 AI 이미지 대신 내 사진 사용</div>", unsafe_allow_html=True)
+    uploaded_images = st.file_uploader(
+        "이미지 업로드",
+        type=["jpg", "jpeg", "png", "webp"],
+        accept_multiple_files=True,
+        label_visibility="collapsed",
+    )
+
+    st.markdown("---")
+    if not uploaded_images:
+        num_images = st.slider("AI 이미지 생성 개수", 1, 5, 5)
+    else:
+        num_images = 0
+        st.markdown(f"<div style='color:#a855f7; font-size:13px;'>✅ 내 이미지 {len(uploaded_images)}장 사용</div>", unsafe_allow_html=True)
+
+    st.markdown("---")
     extra_notes = st.text_area(
         "추가 요청사항",
         placeholder="예: 보라매점 방문 유도 포함, 20대 타겟으로 작성",
         height=120,
     )
     st.markdown("---")
-    st.markdown("<small style='color:rgba(255,255,255,0.3)'>⚡ Powered by Gemini AI</small>", unsafe_allow_html=True)
+    st.markdown("<small style='color:rgba(255,255,255,0.3)'>⚡ Powered by Groq AI</small>", unsafe_allow_html=True)
 
 # ── 메인 입력 ──────────────────────────────────────────────
 col1, col2 = st.columns([4, 1])
@@ -252,9 +269,14 @@ if start_btn and keyword:
         status_box.info("Gemini AI가 SEO 최적화 글을 작성 중입니다... (약 20초)")
         post_data = generate_blog_post(keyword, research, extra_notes)
 
-        progress.progress(60, text="🎨 이미지 생성 중...")
-        status_box.info(f"AI가 이미지 {num_images}장을 생성 중입니다... (약 1~2분)")
-        image_paths = generate_images(post_data["image_prompts"][:num_images], keyword)
+        if uploaded_images:
+            progress.progress(60, text="📎 업로드한 이미지 불러오는 중...")
+            status_box.info(f"업로드한 이미지 {len(uploaded_images)}장을 사용합니다.")
+            image_paths = None
+        else:
+            progress.progress(60, text="🎨 이미지 생성 중...")
+            status_box.info(f"AI가 이미지 {num_images}장을 생성 중입니다... (약 1~2분)")
+            image_paths = generate_images(post_data["image_prompts"][:num_images], keyword)
 
         progress.progress(100, text="✅ 완성!")
         status_box.success("완성! 아래 내용을 네이버 블로그에 복사해서 붙여넣으세요.")
@@ -274,12 +296,26 @@ if start_btn and keyword:
         st.markdown('<div class="label-tag">📝 본문</div>', unsafe_allow_html=True)
         st.text_area("본문 (복사하세요)", value=post_data["content"], height=400, key="content_area", label_visibility="collapsed")
 
-        # 이미지 다운로드
-        if image_paths:
-            st.markdown("---")
-            st.markdown('<div class="label-tag">🖼️ 이미지 (다운로드 후 블로그에 첨부)</div>', unsafe_allow_html=True)
-            cols = st.columns(len(image_paths))
-            for i, (col, path) in enumerate(zip(cols, image_paths)):
+        # 이미지 표시
+        st.markdown("---")
+        st.markdown('<div class="label-tag">🖼️ 이미지 (블로그에 첨부)</div>', unsafe_allow_html=True)
+
+        if uploaded_images:
+            cols = st.columns(min(len(uploaded_images), 3))
+            for i, (col, img_file) in enumerate(zip(cols * 10, uploaded_images)):
+                with col:
+                    st.image(img_file, use_container_width=True)
+                    st.download_button(
+                        label=f"⬇️ 이미지 {i+1} 다운로드",
+                        data=img_file.getvalue(),
+                        file_name=img_file.name,
+                        mime=img_file.type,
+                        key=f"ul_{i}",
+                        use_container_width=True,
+                    )
+        elif image_paths:
+            cols = st.columns(min(len(image_paths), 3))
+            for i, (col, path) in enumerate(zip(cols * 10, image_paths)):
                 with col:
                     st.image(path, use_container_width=True)
                     with open(path, "rb") as f:
