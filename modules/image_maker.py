@@ -14,13 +14,14 @@ def generate_images(prompts: list, keyword: str) -> list:
 
     for i, prompt in enumerate(prompts):
         enhanced_prompt = (
-            f"{prompt}, professional photography, bright clean background, "
-            "Korean smartphone store, high quality, modern design"
+            f"{prompt}, professional DSLR photography, sharp focus, "
+            "high resolution, cinematic lighting, ultra detailed, "
+            "Korean smartphone retail store, modern clean aesthetic, 8k quality"
         )
 
         try:
             encoded = quote(enhanced_prompt)
-            url = f"https://image.pollinations.ai/prompt/{encoded}?width=1200&height=800&nologo=true&seed={timestamp+i}"
+            url = f"https://image.pollinations.ai/prompt/{encoded}?width=1200&height=800&nologo=true&seed={timestamp+i}&model=flux"
 
             response = requests.get(url, timeout=60)
             if response.status_code == 200:

@@ -216,7 +216,7 @@ with st.expander("📖 사용방법 가이드 (처음 사용 시 읽어주세요
 with st.sidebar:
     st.markdown("### ⚙️ 설정")
     st.markdown("---")
-    num_images = st.slider("이미지 생성 개수", 1, 3, 2)
+    num_images = st.slider("이미지 생성 개수", 1, 5, 5)
     extra_notes = st.text_area(
         "추가 요청사항",
         placeholder="예: 보라매점 방문 유도 포함, 20대 타겟으로 작성",
